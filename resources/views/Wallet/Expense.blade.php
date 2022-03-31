@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div style="text-align: center; font-size:2em;" class="mt-md-5 ">
-                        <span >Add Your Income </span>
+                        <span >Add Your Expense </span>
                     </div>
                     <hr>
 

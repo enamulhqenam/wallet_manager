@@ -5,6 +5,7 @@ use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function(){
+//Report route section
+// income report
+Route::get('report/income',[ReportController::class,'incomeReport']);
+Route::post('income/report',[ReportController::class,'printIncomeReport']);
+// expense report
+Route::get('report/expense',[ReportController::class,'expenseReport']);
+Route::post('/expense/report',[ReportController::class,'printExpenseReport']);
+
+//Report route section end.
+
+
 // incomeCategory routs start
 Route::get('income/category/trash',[IncomeCategoryController::class,'trash']);
 Route::get('incomeCategory/{id}/delete/permanently',[IncomeCategoryController::class,'forceDelete']);
@@ -92,6 +106,8 @@ Route::resource('expense', ExpenseController::class);
 // Route::post('expense/update',[ExpenseController::class,'update']);
 // Route::get('expense/edit/{id}',[ExpenseController::class,'edit']);
 Route::get('expense/{id}/delete',[ExpenseController::class,'destroy']);
+
+
 
 });
 

@@ -79,9 +79,9 @@
                         Report
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Income </a>
-                      <a class="dropdown-item" href="#">Expense</a>
-                      <a class="dropdown-item" href="#">Total</a>
+                      <a class="dropdown-item" href="/report/income">Income </a>
+                      <a class="dropdown-item" href="/report/expense">Expense</a>
+                      <a class="dropdown-item" href="/total/report">Total</a>
 
                   </li>
               </ul>

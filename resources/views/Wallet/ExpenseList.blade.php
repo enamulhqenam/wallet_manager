@@ -5,7 +5,7 @@
 <main class="col-lg-9 ms-sm-auto col-lg-10 px-lg-4">
     <div class="container mt-lg-5">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-9">
                 <div class="header" style="font-size: 2em ; text-align:center;">
                     <span>Expense List</span>
                 </div>
