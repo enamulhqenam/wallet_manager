@@ -36,7 +36,10 @@ Route::get('report/income',[ReportController::class,'incomeReport']);
 Route::post('income/report',[ReportController::class,'printIncomeReport']);
 // expense report
 Route::get('report/expense',[ReportController::class,'expenseReport']);
-Route::post('/expense/report',[ReportController::class,'printExpenseReport']);
+Route::post('expense/report',[ReportController::class,'printExpenseReport']);
+//total report
+// Route::get('total/report',[ReportController::class,'totalReport']);
+Route::get('total/report',[ReportController::class,'totalReport']);
 
 //Report route section end.
 

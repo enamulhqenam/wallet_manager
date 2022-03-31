@@ -15,18 +15,18 @@ class ReportController extends Controller
         $IncomeCategories= IncomeCategory::all();
         return view('Wallet.report.Income_report',compact('IncomeCategories'));
     }
-
-    public function printIncomeReport(Request $request)
+    public function generateIncome($request)
     {
-        // return $request->all();
-        // $IncomeCategories= IncomeCategory::all();
-      $Incomes = Income::select('incomes.*','income_categories.Name as CategoryName')
+        $Incomes = Income::select('incomes.*','income_categories.Name as CategoryName')
         ->leftJoin('income_categories','incomes.CategoryID','=','income_categories.id')
         ->where('CategoryID',$request->CategoryID)
         ->whereBetween('Income_Date',[$request->Date_from,$request->Date_to])
         ->get();
+    }
 
-
+    public function printIncomeReport(Request $request)
+    {
+        $Incomes = $this->generateIncome($request);
         $totalIncome = $Incomes->sum('Amount');
         return view('Wallet.report.reportResult.incomePrint',compact('Incomes','totalIncome'));
 
@@ -36,14 +36,30 @@ class ReportController extends Controller
         $ExpenseCategory = ExpenseCategory::all();
         return view('Wallet.report.Expense_report',compact('ExpenseCategory'));
     }
-    public function printExpenseReport(Request $request)
+    public function generateExpense($request)
     {
         $Expenses = Expense::select('expenses.*','expense_categories.Name as CategoryName')
         ->leftJoin('expense_categories','expenses.CategoryID','=','expense_categories.id')
         ->whereBetween('Expense_Date',[$request->Date_from,$request->Date_to])
         ->get();
+    }
+    public function printExpenseReport(Request $request)
+    {
+        $Expenses = $this->generateExpense($request);
         $totalExpense = $Expenses->sum('Amount');
-
         return view('Wallet.report.reportResult.expensePrint',compact('Expenses','totalExpense'));
+    }
+
+
+    public function totalReport(Request $request)
+    {
+        $Incomes = $this->generateIncome($request);
+        // $totalIncome = $Incomes->sum('Amount');
+
+        $Expenses = $this->generateExpense($request);
+        // $totalExpense = $Expenses->sum('Amount');
+
+        return view('Wallet.report.reportResult.totalPrint',compact('Incomes','Expenses'));
+
     }
 }
