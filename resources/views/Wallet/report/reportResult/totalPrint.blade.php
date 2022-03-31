@@ -7,9 +7,9 @@
     {{--  table section   --}}
     <div class="container mt-md-5">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="header" style="font-size: 2em ; text-align:center;">
-                    <span>Report result</span>
+                    <span>Income Report result</span>
                 </div>
                 <table class="table table-responsive table-bordered table-stripped mt-md-6 font-weight-bold">
                     <thade>
@@ -32,21 +32,15 @@
                             <td></td>
                             <td></td>
                             <td>Total Income = </td>
-                            {{--  <td>{{ $totalIncome }}</td>  --}}
+                            <td>{{ $totalIncome }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
-    <hr>
-    <br>
-    <div class="container mt-md-5">
-        <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="header" style="font-size: 2em ; text-align:center;">
-                    <span>Report result</span>
+                    <span>Expense Report result</span>
                 </div>
                 <table class="table table-responsive table-bordered table-stripped mt-md-6 font-weight-bold">
                     <thade>

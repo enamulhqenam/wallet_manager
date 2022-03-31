@@ -22,6 +22,8 @@ class ReportController extends Controller
         ->where('CategoryID',$request->CategoryID)
         ->whereBetween('Income_Date',[$request->Date_from,$request->Date_to])
         ->get();
+
+        return $Incomes;
     }
 
     public function printIncomeReport(Request $request)
@@ -42,6 +44,8 @@ class ReportController extends Controller
         ->leftJoin('expense_categories','expenses.CategoryID','=','expense_categories.id')
         ->whereBetween('Expense_Date',[$request->Date_from,$request->Date_to])
         ->get();
+
+        return $Expenses ;
     }
     public function printExpenseReport(Request $request)
     {
@@ -50,16 +54,27 @@ class ReportController extends Controller
         return view('Wallet.report.reportResult.expensePrint',compact('Expenses','totalExpense'));
     }
 
-
     public function totalReport(Request $request)
     {
         $Incomes = $this->generateIncome($request);
-        // $totalIncome = $Incomes->sum('Amount');
+        $Expenses = $this->generateExpense($request);
+        return view('Wallet.report.total_report',compact('Incomes' , 'Expenses'));
+    }
+
+    public function totalReportResult(Request $request)
+    {
+        $Incomes = $this->generateIncome($request);
+        $totalIncome = $Incomes->sum('Amount');
 
         $Expenses = $this->generateExpense($request);
-        // $totalExpense = $Expenses->sum('Amount');
+        $totalExpense = $Expenses->sum('Amount');
 
-        return view('Wallet.report.reportResult.totalPrint',compact('Incomes','Expenses'));
+        return view('Wallet.report.reportResult.totalPrint',compact(
+            'Incomes',
+            'Expenses',
+            'totalIncome',
+            'totalExpense'
+        ));
 
     }
 }

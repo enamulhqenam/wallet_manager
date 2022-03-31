@@ -38,8 +38,8 @@ Route::post('income/report',[ReportController::class,'printIncomeReport']);
 Route::get('report/expense',[ReportController::class,'expenseReport']);
 Route::post('expense/report',[ReportController::class,'printExpenseReport']);
 //total report
-// Route::get('total/report',[ReportController::class,'totalReport']);
 Route::get('total/report',[ReportController::class,'totalReport']);
+Route::post('total/report/result',[ReportController::class,'totalReportResult']);
 
 //Report route section end.
 
