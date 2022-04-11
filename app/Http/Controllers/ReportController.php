@@ -17,6 +17,16 @@ class ReportController extends Controller
     }
     public function generateIncome($request)
     {
+        if(is_null($request->CategoryID))
+        {
+            $Incomes = Income::select('incomes.*','income_categories.Name as CategoryName')
+            ->leftJoin('income_categories','incomes.CategoryID','=','income_categories.id')
+            ->whereBetween('Income_Date',[$request->Date_from,$request->Date_to])
+            ->get();
+    
+            return $Incomes;
+        }
+
         $Incomes = Income::select('incomes.*','income_categories.Name as CategoryName')
         ->leftJoin('income_categories','incomes.CategoryID','=','income_categories.id')
         ->where('CategoryID',$request->CategoryID)
@@ -40,8 +50,19 @@ class ReportController extends Controller
     }
     public function generateExpense($request)
     {
+        if(is_null($request->CategoryID))
+        {
+            $Expenses = Expense::select('expenses.*','expense_categories.Name as CategoryName')
+            ->leftJoin('expense_categories','expenses.CategoryID','=','expense_categories.id')
+            ->whereBetween('Expense_Date',[$request->Date_from,$request->Date_to])
+            ->get();
+    
+            return $Expenses ;
+        }
+
         $Expenses = Expense::select('expenses.*','expense_categories.Name as CategoryName')
         ->leftJoin('expense_categories','expenses.CategoryID','=','expense_categories.id')
+        ->where('expenses.CategoryID',$request->CategoryID)
         ->whereBetween('Expense_Date',[$request->Date_from,$request->Date_to])
         ->get();
 
@@ -63,6 +84,7 @@ class ReportController extends Controller
 
     public function totalReportResult(Request $request)
     {
+        // return $request->all();
         $Incomes = $this->generateIncome($request);
         $totalIncome = $Incomes->sum('Amount');
 

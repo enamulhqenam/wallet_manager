@@ -6,6 +6,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::post('total/report/result',[ReportController::class,'totalReportResult'])
 
 //Report route section end.
 
+//mail controler 
+Route::get('/email',[MailController::class,'send']);
+//mail controler end
 
 // incomeCategory routs start
 Route::get('income/category/trash',[IncomeCategoryController::class,'trash']);

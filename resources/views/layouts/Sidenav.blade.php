@@ -85,6 +85,13 @@
 
                   </li>
               </ul>
+              <hr>
+              <li class="nav-item">
+                <a class="nav-link" href="/email">
+                    <span class="iconify" data-icon="clarity:email-solid-badged"></span>
+                  Email
+                </a>
+              </li>
           </ul>
         </div>
       </nav>

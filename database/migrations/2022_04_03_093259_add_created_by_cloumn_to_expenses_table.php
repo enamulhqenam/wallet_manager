@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('expenses', function (Blueprint $table) {
-            $table->softDeletes();
+            $table->bigInteger('created_by')->after('created_at');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('expenses', function (Blueprint $table) {
-            $table->dropSoftDeletes();
+            //
         });
     }
 };

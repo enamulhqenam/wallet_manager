@@ -69,6 +69,34 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <h2>Rest Amount</h2>
+                    <table class="table-responsive table-bordered table-stripeed col-md-6">
+                        <thead>
+                            <tr>
+                                <th>Total Income =</th>
+                                <th>{{$totalIncome}}</th>
+                            </tr>
+                            <tr>
+                                <th>Total Expense = </th>
+                                <th>{{$totalExpense}}</th>
+                            </tr>
+                            <tr>
+                                <th>Rest Amount = </th>
+                                <th>{{$totalIncome-$totalExpense}}</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 printbutton">
+                <button onclick="window.print()" class="btn btn-info px-md-4" >Print</button>
+            </div>
         </div>
     </div>
 </main>

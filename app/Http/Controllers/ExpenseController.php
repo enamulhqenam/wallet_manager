@@ -30,6 +30,7 @@ class ExpenseController extends Controller
             'expenses.deleted_at',
             'expense_categories.Name as CategoryName'
         )
+        ->where('created_by',auth()->user()->id)
         ->leftJoin('expense_categories','expenses.CategoryID','=','expense_categories.id')->get();
         return view('Wallet.ExpenseList',compact('ExpenseCategories','Categories'));
     }
@@ -53,7 +54,18 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        Expense::create($request->all());
+        // Expense::create($request->all());
+        // return back();
+
+        $Expense = new Expense();
+        $Expense->CategoryID = $request->CategoryID;
+        $Expense->Amount     = $request->Amount;
+        $Expense->Description = $request->Description;
+        $Expense->Expense_Date = date('Y-m-d');
+        $Expense->created_by = auth()->user()->id;
+
+        $Expense->save();
+
         return back();
     }
 

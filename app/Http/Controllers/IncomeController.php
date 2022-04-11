@@ -7,7 +7,7 @@ use App\Models\IncomeCategory;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
-
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class IncomeController extends Controller
 {
@@ -31,6 +31,7 @@ class IncomeController extends Controller
 
         'income_categories.Name as CategeroyName'
     )
+    ->where('created_by',auth()->user()->id)
     -> leftjoin ('income_categories', 'incomes.CategoryID','=','income_categories.id')->get();
         return view('Wallet.IncomeList',compact('Categories','IncomeCategories'));
     }
@@ -54,7 +55,19 @@ class IncomeController extends Controller
      */
     public function store(Request $request)
     {
-        Income::create($request->all());
+        // Income::create($request->all());
+        // return back();
+
+        $Income = new Income();
+
+        $Income->CategoryID     = $request->CategoryID ;
+        $Income->Amount         = $request->Amount;
+        $Income->Description    = $request->Description;
+        $Income->Income_Date    = date('Y-m-d');
+        $Income->created_by     =auth()->user()->id;
+        
+        $Income->save();
+
         return back();
     }
 
