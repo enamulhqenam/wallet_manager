@@ -80,13 +80,13 @@
             @endif
             <img src="" alt="">
                 <div class="welcome">
-                    <span>Welcome</span>
+                    <span>স্বাগতম</span>
                 </div>
                 <div class="personal">
-                    <span>Personal Wallet Manager</span>
+                    <span>পয়সা পুটলির ম্যানেজার</span>
                     <hr>
-                </div>
-
+                </div >
+                    
                 </div>
             </div>
         </div>

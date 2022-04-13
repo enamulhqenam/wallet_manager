@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\IncomeCategory;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

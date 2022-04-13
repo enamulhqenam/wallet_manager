@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class demo extends Mailable
+class sendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,9 @@ class demo extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($Data)
     {
-        //
+        $this->Data = $Data ;
     }
 
     /**
@@ -28,6 +28,6 @@ class demo extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('Wallet.email.mail')->with('Data',$this->Data);
     }
 }

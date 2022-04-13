@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,11 +45,24 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+
+    {{-- -------sent mail---------- --}}
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/send.css">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
   </head>
   <body>
-
+{{-- send mail  --}}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{{-- send mail end  --}}
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">  {{'User=>'.' '.auth()->user()->name}}</a>
+ 
+    <img src="/upload/users/{{auth()->user()->photo}}" alt="" style="widht:60px ; height:60px ; border-radius:50%; margin:10px; ">
+    <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="#">{{'User=>'.' '.auth()->user()->name}}</a>
+  
+  <button class="px-md-5 btn btn-success mx-md-2"><a href="/profile/edit" class="text-light h4"> Edit Profile</a></button>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -58,7 +70,7 @@
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       {{ Form::open(['url' => 'logout']) }}
-        <button type="submit" class="btn btn-info">Sing Out</button>
+        <button type="submit" class="btn btn-info mx-md-2">Sing Out</button>
       {{ Form::close() }}
     </div>
   </div>

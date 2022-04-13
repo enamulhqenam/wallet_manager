@@ -86,12 +86,24 @@
                   </li>
               </ul>
               <hr>
+              <span style="margin-left: 10px">Service</span>
               <li class="nav-item">
-                <a class="nav-link" href="/email">
+                <a class="nav-link" href="/email/send">
                     <span class="iconify" data-icon="clarity:email-solid-badged"></span>
                   Email
                 </a>
               </li>
+              <ul>
+                <li class="">
+                    <a class="nav-link dropdown-toggle" href="Wallet/trash" id="navbarDropdown" data-toggle="dropdown" >
+                        <span class="iconify" data-icon="flat-color-icons:business-contact"></span>
+                      Phone Book
+                    </a>
+                    <div class="dropdown-menu" >
+                      <a class="dropdown-item" href="/contact"><span class="iconify" data-icon="openmoji:add-contact"></span> Add contact</a>
+                      <a class="dropdown-item" href="/contact/list"><span class="iconify" data-icon="fxemoji:contact2"></span> Contact List </a>
+                  </li>
+              </ul>
           </ul>
         </div>
       </nav>
