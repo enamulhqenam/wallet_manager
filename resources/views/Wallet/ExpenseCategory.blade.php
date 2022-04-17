@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="form-group col-md-8 mt-md-5">
+                <h2>Expense Category Add</h2>
                 {{ Form::open(array('url' =>'/expenseCategory')) }}
                     <label for="Name" class="form-lable ">Category Name</label>
                     <input type="text" name="Name" class="form-control mt-md-4">

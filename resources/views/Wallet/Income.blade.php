@@ -11,8 +11,9 @@
 
                     {{ Form::open(array('url'=>'/income')) }}
                     <div class="form-group">
-                        <label for="Category">Income Category</label>
-                        <div class="col-md-6">
+                        
+                        <div class="col-md-12">
+                            <label for="Category">Income Category</label>
                             <select name="CategoryID" id="" class="form-control mt-md-3 mb-md-3">
                                 <option value=""> Select Category </option>
                                 @foreach ($IncomeCategories as $Category)
@@ -20,6 +21,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        <br>
                         <label for="Name" class="form-lable ">Amount</label>
                         <input type="Amount" name="Amount" class="form-control mt-md-3 mb-md-3">
                         <label for="Name" class="form-lable ">Description</label>
